@@ -1,0 +1,60 @@
+services:
+  php-app:
+    build:
+      context: ./php-app
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    container_name: php-app
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  phpinfo-exporter:
+    build:
+      context: ./phpinfo-exporter
+      dockerfile: Dockerfile
+    ports:
+      - "9308:9308"
+    environment:
+      - PHP_INFO_URL=http://php-app:80/phpinfo
+    container_name: phpinfo-exporter
+    restart: unless-stopped
+    depends_on:
+      - php-app
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    container_name: prometheus
+    restart: unless-stopped
+    depends_on:
+      - php-app
+      - phpinfo-exporter
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    container_name: grafana
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+
+networks:
+  default:
+    name: php-monitor
