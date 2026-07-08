@@ -1,4 +1,4 @@
-FROM php:8.3-apache
+FROM php:8.5-apache
 
 # System deps + PHP extensions (apcu backs the Prometheus exporter, opcache for speed).
 RUN apt-get update \
