@@ -8,6 +8,30 @@ updates:
     directory: "/php-app" # Location of package manifests
     schedule:
       interval: "daily"
+  - package-ecosystem: "maven" # See documentation for possible values
+    directory: "/java-app" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/java-app" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/node-app" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/node-app" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "nuget" # See documentation for possible values
+    directory: "/dotnet-app" # Location of package manifests
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/dotnet-app" # Location of package manifests
+    schedule:
+      interval: "daily"
   - package-ecosystem: "pip" # See documentation for possible values
     directory: "/phpinfo-exporter" # Location of package manifests
     schedule:

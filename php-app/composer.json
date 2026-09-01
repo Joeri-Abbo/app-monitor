@@ -1,5 +1,5 @@
 {
-    "name": "php-monitor/app",
+    "name": "app-monitor/php-app",
     "description": "Small PHP website with an Illuminate router, a phpinfo page and a Prometheus exporter.",
     "type": "project",
     "license": "MIT",

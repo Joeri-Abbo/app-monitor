@@ -8,6 +8,24 @@ scrape_configs:
     static_configs:
       - targets: ["php-app:80"]
 
+  # The Spring Boot app's exporter (same counters plus Micrometer's jvm_* metrics).
+  - job_name: java-app
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["java-app:8080"]
+
+  # The Express app's exporter (same counters plus prom-client's nodejs_* metrics).
+  - job_name: node-app
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["node-app:8080"]
+
+  # The ASP.NET Core app's exporter (same counters plus prometheus-net's dotnet_* metrics).
+  - job_name: dotnet-app
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["dotnet-app:8080"]
+
   # The Python exporter that scrapes /phpinfo (OPcache memory, PHP version).
   - job_name: phpinfo-exporter
     static_configs:

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# php-monitor - Startup Script
-# Builds and starts the PHP website and its Prometheus scraper.
+# app-monitor - Startup Script
+# Builds and starts the four example websites and their Prometheus scrapers.
 
 set -e
 
-echo "🐘 Starting php-monitor"
+echo "📊 Starting app-monitor"
 echo "======================="
 
 # Check if Docker is running
@@ -38,10 +38,19 @@ echo ""
 echo "🌐 Access URLs:"
 echo "   PHP website:      http://localhost:8080"
 echo "   phpinfo:          http://localhost:8080/phpinfo"
-echo "   App metrics:      http://localhost:8080/metrics"
+echo "   PHP metrics:      http://localhost:8080/metrics"
+echo "   Java website:     http://localhost:8081"
+echo "   javainfo:         http://localhost:8081/javainfo"
+echo "   Java metrics:     http://localhost:8081/metrics"
+echo "   Node website:     http://localhost:8082"
+echo "   nodeinfo:         http://localhost:8082/nodeinfo"
+echo "   Node metrics:     http://localhost:8082/metrics"
+echo "   .NET website:     http://localhost:8083"
+echo "   dotnetinfo:       http://localhost:8083/dotnetinfo"
+echo "   .NET metrics:     http://localhost:8083/metrics"
 echo "   phpinfo exporter: http://localhost:9308/metrics"
 echo "   Prometheus:       http://localhost:9090"
-echo "   Grafana:          http://localhost:3000  (dashboard: 'PHP OPcache', anon access)"
+echo "   Grafana:          http://localhost:3000  (4 runtime dashboards, anon access)"
 echo ""
 echo "🛑 To stop all containers:"
 echo "   docker-compose down"

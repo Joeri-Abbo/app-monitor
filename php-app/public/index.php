@@ -68,7 +68,7 @@ $router->get('/', function () use ($metrics): Response {
         <html lang="en">
         <head>
             <meta charset="utf-8">
-            <title>php-monitor</title>
+            <title>php-app</title>
             <style>
                 body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; line-height: 1.6; }
                 code { background: #f4f4f5; padding: .1rem .3rem; border-radius: .25rem; }
@@ -79,7 +79,7 @@ $router->get('/', function () use ($metrics): Response {
             </style>
         </head>
         <body>
-            <h1>🐘 php-monitor</h1>
+            <h1>🐘 php-app</h1>
             <p>A small PHP website served through an <strong>Illuminate</strong> router.</p>
             <ul>
                 <li><a href="/phpinfo"><code>/phpinfo</code></a> &mdash; the full <code>phpinfo()</code> report</li>

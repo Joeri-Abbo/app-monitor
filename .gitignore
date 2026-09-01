@@ -1,2 +1,7 @@
 /php-app/vendor/
+/java-app/target/
+/node-app/node_modules/
+/node-app/dist/
+/dotnet-app/bin/
+/dotnet-app/obj/
 .claude
