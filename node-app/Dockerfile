@@ -1,4 +1,4 @@
-FROM node:22-slim AS build
+FROM node:25-slim AS build
 
 WORKDIR /build
 
@@ -10,7 +10,7 @@ COPY tsconfig.json ./
 COPY src ./src
 RUN npm run build
 
-FROM node:22-slim
+FROM node:25-slim
 
 # curl backs the container healthcheck in docker-compose.yml.
 RUN apt-get update \
