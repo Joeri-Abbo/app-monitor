@@ -9,7 +9,7 @@ RUN mvn -B -q dependency:go-offline
 COPY src ./src
 RUN mvn -B -q package -DskipTests
 
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:24-jre
 
 # curl backs the container healthcheck in docker-compose.yml.
 RUN apt-get update \
