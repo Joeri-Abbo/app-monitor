@@ -9,7 +9,7 @@ RUN dotnet restore
 COPY . .
 RUN dotnet publish DotnetApp.csproj -c Release -o /app --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0
+FROM mcr.microsoft.com/dotnet/aspnet:11.0
 
 # curl backs the container healthcheck in docker-compose.yml.
 RUN apt-get update \
